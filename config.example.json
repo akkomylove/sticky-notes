@@ -1,0 +1,8 @@
+{
+  "backend": "openai",
+  "baseUrl": "https://api.example.com/v1",
+  "apiKey": "",
+  "model": "",
+  "geminiApiKey": "",
+  "noteColor": "#f9e8a6"
+}

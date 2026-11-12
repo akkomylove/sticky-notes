@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+}
+
+.sprite {
+  display: none;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: "Microsoft YaHei UI", "PingFang SC", system-ui, sans-serif;
+  background: #221e18;
+  color: #e8e2d6;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.preview {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.pbar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  height: 30px;
+  padding: 0 6px;
+  background: rgba(255, 255, 255, 0.08);
+  -webkit-app-region: drag;
+  app-region: drag;
+}
+
+.p-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.p-count {
+  flex: none;
+  font-size: 11px;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
+
+.p-btn {
+  flex: none;
+  width: 24px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #e8e2d6;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
+
+.p-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.p-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.p-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(232, 226, 214, 0.4);
+}
+
+.ic {
+  display: block;
+  width: 14px;
+  height: 14px;
+  margin: auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.p-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  cursor: zoom-out;
+}
+
+.p-body img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+  object-fit: contain;
+  cursor: default;
+}

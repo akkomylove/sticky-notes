@@ -1,0 +1,15 @@
+node_modules/
+.appdata/
+test-output/
+data/
+config.json
+dist/
+*.log
+*.exe
+.env
+.env.*
+*.pem
+*.key
+*.pfx
+*.p12
+*.tmp

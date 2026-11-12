@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self'; script-src 'self'" />
+    <title>便签</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="is-expanded">
+    <svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true">
+      <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 17v5"/><path d="M9 10.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24V16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V7h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+      <symbol id="i-check-check" viewBox="0 0 24 24"><path d="M18 6 7 17l-5-5"/><path d="m22 10-7.5 7.5L13 16"/></symbol>
+      <symbol id="i-fold" viewBox="0 0 24 24"><path d="m6 15 6-6 6 6"/></symbol>
+      <symbol id="i-unfold" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+      <symbol id="i-fold-all" viewBox="0 0 24 24"><path d="m17 11-5-5-5 5"/><path d="m17 18-5-5-5 5"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="M12 5v14"/></symbol>
+      <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.937A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M19 3v4"/><path d="M21 5h-4"/></symbol>
+      <symbol id="i-clipboard" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M10 11v6"/><path d="M14 11v6"/></symbol>
+      <symbol id="i-list" viewBox="0 0 24 24"><path d="M8 6h13"/><path d="M8 12h13"/><path d="M8 18h13"/><path d="M3.5 6h.01"/><path d="M3.5 12h.01"/><path d="M3.5 18h.01"/></symbol>
+    </svg>
+    <main class="card" data-role="card">
+      <header class="bar">
+        <span class="grip" title="按住拖动"></span>
+        <div class="swatches" data-role="swatches" title="换颜色"></div>
+        <span class="spacer"></span>
+        <div class="actions">
+          <button class="icon" data-act="settings" title="设置 API key" aria-label="设置 API key"><svg class="ic" aria-hidden="true"><use href="#i-gear"/></svg></button>
+          <button class="icon" data-act="pin" title="置顶" aria-label="置顶" aria-pressed="false"><svg class="ic" aria-hidden="true"><use href="#i-pin"/></svg></button>
+          <button class="icon done" data-act="complete" title="标记完成，收进归档" aria-label="标记完成，收进归档"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></button>
+          <button class="icon" data-act="fold" title="折叠（Esc）" aria-label="折叠（Esc）"><svg class="ic" aria-hidden="true"><use href="#i-fold"/></svg></button>
+          <button class="icon danger" data-act="delete" title="删除（进回收站，可恢复）" aria-label="删除（进回收站，可恢复）"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+        </div>
+      </header>
+
+      <section class="pane pane-expanded">
+        <div class="shots" data-role="shots" hidden></div>
+        <input class="title" data-role="title" type="text" maxlength="60" placeholder="任务名" spellcheck="false" />
+        <textarea class="body" data-role="body" placeholder="临时记点什么…　或按 Ctrl+V 把截图丢进来（最多 5 张）"></textarea>
+
+        <div class="ai">
+          <div class="ai-row">
+            <button class="primary" data-act="understand" title="截图 → 任务名"><svg class="ic" aria-hidden="true"><use href="#i-sparkles"/></svg>识别</button>
+            <button class="ghost icon-only" data-act="paste" title="粘剪贴板（最多 5 张）" aria-label="粘剪贴板（最多 5 张）"><svg class="ic" aria-hidden="true"><use href="#i-clipboard"/></svg></button>
+            <span class="status" data-role="status"></span>
+          </div>
+          <div class="draft" data-role="draft" hidden>
+            <div class="draft-head">
+              <strong data-role="draft-name"></strong>
+              <span class="meta" data-role="draft-meta"></span>
+            </div>
+            <p class="draft-summary" data-role="draft-summary"></p>
+            <ul class="draft-points" data-role="draft-points"></ul>
+            <div class="draft-tools">
+              <button class="primary icon-only" data-act="adopt" title="用这个任务名" aria-label="用这个任务名"><svg class="ic" aria-hidden="true"><use href="#i-check"/></svg></button>
+              <button class="ghost icon-only" data-act="adopt-all" title="连正文一起填" aria-label="连正文一起填"><svg class="ic" aria-hidden="true"><use href="#i-check-check"/></svg></button>
+              <button class="ghost icon-only" data-act="drop-draft" title="丢弃" aria-label="丢弃"><svg class="ic" aria-hidden="true"><use href="#i-trash"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="drawer-collapse" data-role="drawer-collapse">
+          <div class="drawer-clip">
+            <div class="drawer" data-role="drawer">
+              <label class="field">
+                <span>后端</span>
+                <select data-role="backend">
+                  <option value="openai">OpenAI 兼容（DeepSeek / 网关）</option>
+                  <option value="gemini">Gemini</option>
+                </select>
+              </label>
+              <label class="field" data-role="baseurl-field">
+                <span>Base URL（到 /v1 为止）</span>
+                <input type="text" data-role="baseurl" placeholder="https://api.example.com/v1" spellcheck="false" />
+              </label>
+              <label class="field">
+                <span data-role="key-label">API key</span>
+                <input type="password" data-role="key" placeholder="sk-…" spellcheck="false" />
+              </label>
+              <div class="hint" data-role="key-state"></div>
+              <label class="field">
+                <span>模型 id（留空自动挑）</span>
+                <input type="text" data-role="model" placeholder="deepseek-v4.1-flash" spellcheck="false" />
+              </label>
+              <div class="drawer-tools">
+                <button class="ghost icon-only" data-act="list-models" title="列出可用模型" aria-label="列出可用模型"><svg class="ic" aria-hidden="true"><use href="#i-list"/></svg></button>
+                <button class="primary" data-act="save-settings">保存</button>
+              </div>
+              <div class="hint" data-role="model-hint"></div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="foot">
+          <button class="ghost icon-only" data-act="new-note" title="新便签（Ctrl+Alt+N）" aria-label="新便签（Ctrl+Alt+N）"><svg class="ic" aria-hidden="true"><use href="#i-plus"/></svg></button>
+          <button class="ghost icon-only" data-act="fold-all" title="全部折叠" aria-label="全部折叠"><svg class="ic" aria-hidden="true"><use href="#i-fold-all"/></svg></button>
+          <span class="saved" data-role="saved"></span>
+        </footer>
+      </section>
+
+      <section class="pane pane-strip">
+        <span class="strip-grip" title="按住拖动整个便签"></span>
+        <span class="strip-title" data-role="strip-title">空便签</span>
+        <span class="strip-hint" title="点开"><svg class="ic" aria-hidden="true"><use href="#i-unfold"/></svg></span>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

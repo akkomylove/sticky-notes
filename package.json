@@ -1,0 +1,48 @@
+{
+  "name": "sticky-notes",
+  "version": "1.3.0",
+  "description": "桌面小便签：可折叠便签 + 截图转任务",
+  "main": "main.js",
+  "private": true,
+  "author": "akkomylove",
+  "scripts": {
+    "start": "electron .",
+    "smoke": "electron . --smoke",
+    "dist": "electron-builder --win portable"
+  },
+  "devDependencies": {
+    "electron": "^45.3.1",
+    "electron-builder": "^26.0.12"
+  },
+  "overrides": {
+    "app-builder-lib": {
+      "minimatch": "11.0.8"
+    },
+    "@electron/universal": {
+      "minimatch": "11.0.8"
+    }
+  },
+  "build": {
+    "appId": "io.github.akkomylove.stickynotes",
+    "productName": "桌面便签",
+    "directories": {
+      "output": "dist"
+    },
+    "asar": true,
+    "files": [
+      "main.js",
+      "preload.js",
+      "lib/**/*",
+      "renderer/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "portable"
+      ]
+    },
+    "portable": {
+      "artifactName": "桌面便签-${version}-便携版.exe"
+    }
+  }
+}

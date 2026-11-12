@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: blob:; style-src 'self'; script-src 'self'" />
+    <title>已完成 / 回收站</title>
+    <link rel="stylesheet" href="archive.css" />
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true">
+      <symbol id="i-undo" viewBox="0 0 24 24"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 5.5 5.5a5.5 5.5 0 0 1-5.5 5.5H11"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M10 11v6"/><path d="M14 11v6"/></symbol>
+    </svg>
+    <main class="wrap">
+      <section class="block">
+        <h2>已完成 <span class="count" data-role="done-count">0</span></h2>
+        <p class="tip">点行尾的放回图标，它会重新出现在桌面原位。彻底删除会先弹确认。</p>
+        <div class="rows" data-role="done-rows"></div>
+        <div class="empty" data-role="done-empty">还没有完成的任务。</div>
+      </section>
+
+      <section class="block">
+        <h2>回收站 <span class="count" data-role="trash-count">0</span></h2>
+        <p class="tip">
+          删除的便签在这里保留 <span data-role="keep-days">30</span> 天，之后自动彻底清除。
+        </p>
+        <div class="rows" data-role="trash-rows"></div>
+        <div class="empty" data-role="trash-empty">回收站是空的。</div>
+        <div class="tools">
+          <button data-act="empty-trash" class="danger">清空回收站</button>
+        </div>
+      </section>
+    </main>
+    <script src="archive.js"></script>
+  </body>
+</html>

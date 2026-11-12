@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'" />
+    <title>截图预览</title>
+    <link rel="stylesheet" href="preview.css" />
+  </head>
+  <body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="sprite" aria-hidden="true">
+      <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+      <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+      <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    </svg>
+    <main class="preview">
+      <header class="pbar">
+        <span class="p-title" data-role="p-title">截图预览</span>
+        <span class="p-count" data-role="p-count"></span>
+        <button class="p-btn" data-act="prev" title="上一张（←）" aria-label="上一张"><svg class="ic" aria-hidden="true"><use href="#i-left"/></svg></button>
+        <button class="p-btn" data-act="next" title="下一张（→）" aria-label="下一张"><svg class="ic" aria-hidden="true"><use href="#i-right"/></svg></button>
+        <button class="p-btn" data-act="close" title="关闭（Esc 或点空白处）" aria-label="关闭预览"><svg class="ic" aria-hidden="true"><use href="#i-x"/></svg></button>
+      </header>
+      <div class="p-body" data-role="p-body" title="点空白处关闭">
+        <img data-role="p-img" alt="截图放大预览" />
+      </div>
+    </main>
+    <script src="preview.js"></script>
+  </body>
+</html>
